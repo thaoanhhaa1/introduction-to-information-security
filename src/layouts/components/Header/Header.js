@@ -15,7 +15,7 @@ const navHeader = [
 
 const Header = () => {
     return (
-        <div className="fixed top-0 left-0 right-0 shadow-lg h-[var(--header-height)] z-5 bg-white">
+        <div className="fixed top-0 left-0 right-0 shadow-lg h-[var(--header-height)] z-[5] bg-white">
             <div className="flex justify-between items-center p-4 w-full max-w-5xl mx-auto">
                 <Link className="block w-[150px]" to={config.routes.home}>
                     <Image src="/logo.png" alt="" />

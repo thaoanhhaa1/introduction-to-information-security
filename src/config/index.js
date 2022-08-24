@@ -66,6 +66,16 @@ const config = {
         'X',
         'Y',
     ],
+    languageList: [
+        {
+            value: 'vietnamese',
+            label: 'Tiếng Việt',
+        },
+        {
+            value: 'english',
+            label: 'Tiếng Anh',
+        },
+    ],
 };
 
 export default config;

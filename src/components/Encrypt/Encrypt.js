@@ -7,7 +7,7 @@ const Encrypt = ({ children }) => {
     return (
         <div>
             <Heading className="mt-5">{children}</Heading>
-            <div className="grid grid-cols-5 mt-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5 mt-3">
                 {config.classicalCryptographyList.map((item) => (
                     <EncryptItem key={v4()} item={item} />
                 ))}

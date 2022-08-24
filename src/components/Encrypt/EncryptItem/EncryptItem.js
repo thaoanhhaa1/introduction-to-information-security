@@ -7,8 +7,8 @@ const EncryptItem = ({ item }) => {
             className="flex gap-1 px-4 py-2 items-center hover:bg-text-5 hover:bg-opacity-20 hover:text-primary transition-all rounded-md"
             to={item.to}
         >
-            <EncryptionIcon className="w-[14px] h-[14px]" />
-            <span>{item.title}</span>
+            <EncryptionIcon className="w-[14px] h-[14px] flex-shrink-0" />
+            <span className="whitespace-nowrap">{item.title}</span>
         </Link>
     );
 };

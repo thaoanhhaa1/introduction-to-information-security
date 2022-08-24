@@ -12,7 +12,7 @@ const HomePage = () => {
                 className="w-full h-screen bg-center bg-cover"
                 style={{ backgroundImage: 'url(banner.jpg)' }}
             ></div>
-            <div className="max-w-5xl mx-auto">
+            <div className="max-w-5xl mx-auto px-4">
                 <Encrypt>Mã hóa cổ điển</Encrypt>
                 <Encrypt>Mã hóa hiện đại</Encrypt>
             </div>
