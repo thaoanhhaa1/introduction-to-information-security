@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import useToggle from '~/hooks/useToggle';
 import { classNames } from '~/utils';
 import Button from '../Button';
+import ContentItem from '../ContentItem/ContentItem';
 import FormGroup from '../FormGroup';
 import GridInput from '../GridInput';
-import Heading from '../Heading';
 import { ClearIcon, MinusIcon, PlusIcon } from '../Icons';
 import Input from '../Input';
 import Textarea from '../Textarea';
@@ -87,8 +87,7 @@ const MatrixDecrypt = () => {
     };
 
     return (
-        <div className="w-full md:flex-1">
-            <Heading>Giải mã</Heading>
+        <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
                 <FormGroup>
                     <Input
@@ -179,7 +178,7 @@ G H I"
                     Chuỗi đã được giải mã là: <strong>{decrypt}</strong>
                 </div>
             )}
-        </div>
+        </ContentItem>
     );
 };
 

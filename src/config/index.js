@@ -4,7 +4,7 @@ const config = {
     routes,
     classicalCryptographyList: [
         { title: 'Ví dụ 1', to: routes.example1 },
-        { title: 'Ví dụ 2', to: routes.example2 },
+        { title: 'Mã hóa 12 con giáp', to: routes.twelveZodiacAnimalsPage },
         { title: 'Mã hóa Caesar', to: routes.example2 },
     ],
     english: [
@@ -76,6 +76,34 @@ const config = {
             label: 'Tiếng Anh',
         },
     ],
+    twelveZodiacAnimals: [
+        'Tí',
+        'Sửu',
+        'Dần',
+        'Mẹo',
+        'Thìn',
+        'Tỵ',
+        'Ngọ',
+        'Mùi',
+        'Thân',
+        'Dậu',
+        'Tuất',
+        'Hợi',
+    ],
+    twelveZodiacAnimalsObj: {
+        0: 'Tí',
+        1: 'Sửu',
+        2: 'Dần',
+        3: 'Mẹo',
+        4: 'Thìn',
+        5: 'Tỵ',
+        6: 'Ngọ',
+        7: 'Mùi',
+        8: 'Thân',
+        9: 'Dậu',
+        10: 'Tuất',
+        11: 'Hợi',
+    },
 };
 
 export default config;

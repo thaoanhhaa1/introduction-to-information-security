@@ -1,15 +1,15 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 } from 'uuid';
+import * as yup from 'yup';
 import config from '~/config';
 import { createMatrix, getRandomNumber } from '~/utils';
 import Button from '../Button';
-import Heading from '../Heading';
+import ContentItem from '../ContentItem/ContentItem';
+import FormGroup from '../FormGroup';
 import Input from '../Input';
 import RadioGroup from '../RadioGroup';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import FormGroup from '../FormGroup';
 
 const schema = yup
     .object({
@@ -79,8 +79,7 @@ const MatrixEncrypt = () => {
     };
 
     return (
-        <div className="w-full md:flex-1">
-            <Heading>Mã hóa</Heading>
+        <ContentItem title="Mã hóa">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
                 <FormGroup>
                     <Input
@@ -137,7 +136,7 @@ const MatrixEncrypt = () => {
                     ))}
                 </div>
             )}
-        </div>
+        </ContentItem>
     );
 };
 
