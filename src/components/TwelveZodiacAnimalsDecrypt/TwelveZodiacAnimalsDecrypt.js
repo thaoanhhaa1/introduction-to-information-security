@@ -6,6 +6,7 @@ import config from '~/config';
 import convertCapitalize from '~/utils/convertCapitalize';
 import Button from '../Button';
 import ContentItem from '../ContentItem';
+import EncryptionResult from '../EncryptionResult';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
 
@@ -74,11 +75,7 @@ const TwelveZodiacAnimalsDecrypt = () => {
                     Giải mã
                 </Button>
             </form>
-            {decrypt && (
-                <div className="mt-6">
-                    Chuỗi sau khi được giải mã là: <strong>{decrypt}</strong>
-                </div>
-            )}
+            <EncryptionResult isEncryption={false} encryptionResult={decrypt} />
         </ContentItem>
     );
 };

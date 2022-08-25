@@ -7,8 +7,10 @@ import config from '~/config';
 import { createMatrix, getRandomNumber } from '~/utils';
 import Button from '../Button';
 import ContentItem from '../ContentItem/ContentItem';
+import EncryptionResult from '../EncryptionResult';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
+import Label from '../Label';
 import RadioGroup from '../RadioGroup';
 
 const schema = yup
@@ -35,10 +37,11 @@ const MatrixEncrypt = () => {
     const handleValid = (values) => {
         const encryptChar = {};
         let index = 1;
-        const { encrypt, language } = values;
+        const { language } = values;
+        const encrypt = values.encrypt.toUpperCase();
         const charList = config[language];
         for (let char of encrypt) {
-            if (charList.includes(char.toUpperCase()) && !encryptChar[char]) {
+            if (charList.includes(char) && !encryptChar[char]) {
                 encryptChar[char] = index++;
             }
         }
@@ -48,13 +51,15 @@ const MatrixEncrypt = () => {
             4,
         );
         const matrixChar = createMatrix(lengthMatrix, lengthMatrix);
+        const matrixIndex = [];
+        for (let i = 0; i < lengthMatrix; i++)
+            for (let j = 0; j < lengthMatrix; j++) matrixIndex.push([i, j]);
+
+        matrixIndex.sort(() => Math.random() - 0.5);
         encryptCharKeys.forEach((char, index) => {
-            let j;
-            do {
-                j = getRandomNumber(lengthMatrix);
-            } while (matrixChar[index % lengthMatrix][j]);
-            matrixChar[index % lengthMatrix][j] = char.toUpperCase();
-            encryptChar[char] = [index % lengthMatrix, j];
+            const [i, j] = matrixIndex[index];
+            matrixChar[i][j] = char.toUpperCase();
+            encryptChar[char] = [i, j];
         });
         const lengthCharList = charList.length;
         for (let i = 0; i < lengthMatrix; i++)
@@ -82,11 +87,12 @@ const MatrixEncrypt = () => {
         <ContentItem title="Mã hóa">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
                 <FormGroup>
+                    <Label htmlFor="encrypt">Chuỗi cần mã hóa</Label>
                     <Input
                         invalid={errors?.encrypt}
                         name="encrypt"
                         control={control}
-                        placeholder="Nhập chuỗi cần mã hóa..."
+                        placeholder="Ex: Information Technology"
                     />
                     {errors?.encrypt && (
                         <FormGroup.Error>
@@ -94,9 +100,9 @@ const MatrixEncrypt = () => {
                         </FormGroup.Error>
                     )}
                 </FormGroup>
-                <FormGroup>
+                <FormGroup className="mt-4">
+                    <Label>Ngôn ngữ</Label>
                     <RadioGroup
-                        className="mt-4"
                         name="language"
                         radioList={config.languageList}
                         control={control}
@@ -115,11 +121,7 @@ const MatrixEncrypt = () => {
                     Mã hóa
                 </Button>
             </form>
-            {encryption && (
-                <div className="mt-6">
-                    Chuỗi sau khi được mã hóa là: <strong>{encryption}</strong>
-                </div>
-            )}
+            <EncryptionResult encryptionResult={encryption} />
             {matrix && matrix[0] && matrix[0][0] && (
                 <div className="flex flex-col mt-2">
                     {matrix.map((item) => (

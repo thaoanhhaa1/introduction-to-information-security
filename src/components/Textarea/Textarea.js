@@ -56,6 +56,7 @@ const Textarea = (
 
     return (
         <textarea
+            id={name}
             value={value}
             className={classNames(
                 'py-[15px] px-[25px] min-h-[104px] w-full border border-[#F1F1F3] font-medium text-text-1 placeholder:text-text-4 outline-none rounded-[10px] resize-none',

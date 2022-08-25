@@ -5,6 +5,7 @@ import {
     useState,
 } from 'react';
 import { v4 } from 'uuid';
+import config from '~/config';
 import { classNames, createMatrix } from '~/utils';
 
 const GridInput = ({ name, className, setValue, count = 3 }, ref) => {
@@ -43,6 +44,7 @@ const GridInput = ({ name, className, setValue, count = 3 }, ref) => {
 
                 return (
                     <input
+                        placeholder={config.english[index % 24]}
                         title={`a[${i}, ${j}]`}
                         key={v4()}
                         className="text-right py-[2px] px-1 w-[55px] border border-gray-300 outline-none rounded-lg"

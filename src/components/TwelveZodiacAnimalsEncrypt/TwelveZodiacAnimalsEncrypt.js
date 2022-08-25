@@ -5,6 +5,7 @@ import * as yup from 'yup';
 import config from '~/config';
 import Button from '../Button';
 import ContentItem from '../ContentItem/ContentItem';
+import EncryptionResult from '../EncryptionResult';
 import FormGroup from '../FormGroup';
 import Input from '../Input';
 
@@ -87,11 +88,7 @@ const TwelveZodiacAnimalsEncrypt = () => {
                     Mã hóa
                 </Button>
             </form>
-            {encrypt && (
-                <div className="mt-6">
-                    Chuỗi sau khi được mã hóa là: <strong>{encrypt}</strong>
-                </div>
-            )}
+            <EncryptionResult encryptionResult={encrypt} />
         </ContentItem>
     );
 };

@@ -1,11 +1,18 @@
 import { useController } from 'react-hook-form';
 import { classNames } from '~/utils';
 
-const Input = ({ placeholder, control, name, invalid, ...props }) => {
+const Input = ({
+    defaultValue,
+    placeholder,
+    control,
+    name,
+    invalid,
+    ...props
+}) => {
     const { field } = useController({
         control,
         name,
-        defaultValue: '',
+        defaultValue: defaultValue ?? '',
     });
 
     return (

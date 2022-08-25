@@ -5,7 +5,7 @@ const config = {
     classicalCryptographyList: [
         { title: 'Ví dụ 1', to: routes.example1 },
         { title: 'Mã hóa 12 con giáp', to: routes.twelveZodiacAnimalsPage },
-        { title: 'Mã hóa Caesar', to: routes.example2 },
+        { title: 'Mã hóa Caesar: Cộng', to: routes.caesarEncryptionPlus },
     ],
     english: [
         'A',

@@ -4,10 +4,12 @@ import useToggle from '~/hooks/useToggle';
 import { classNames } from '~/utils';
 import Button from '../Button';
 import ContentItem from '../ContentItem/ContentItem';
+import EncryptionResult from '../EncryptionResult';
 import FormGroup from '../FormGroup';
 import GridInput from '../GridInput';
 import { ClearIcon, MinusIcon, PlusIcon } from '../Icons';
 import Input from '../Input';
+import Label from '../Label';
 import Textarea from '../Textarea';
 
 // TODO Validation
@@ -90,11 +92,12 @@ const MatrixDecrypt = () => {
         <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
                 <FormGroup>
+                    <Label htmlFor="decrypt">Chuỗi cần giải mã</Label>
                     <Input
                         invalid={errors?.decrypt}
                         name="decrypt"
                         control={control}
-                        placeholder="Nhập chuỗi cần giải mã..."
+                        placeholder="Ex: 1.3, 2.2-2.2, 3.1, 1.3-4.3, 1.3, 2.2, 1.2"
                     />
                     {errors?.decrypt && (
                         <FormGroup.Error>
@@ -103,6 +106,7 @@ const MatrixDecrypt = () => {
                     )}
                 </FormGroup>
                 <FormGroup className="mt-4">
+                    <Label htmlFor="matrix">Ma trận</Label>
                     <GridInput
                         setValue={setValue}
                         className={classNames(isMatrix ? '' : 'hidden')}
@@ -173,11 +177,7 @@ G H I"
                     Giải mã
                 </Button>
             </form>
-            {decrypt && (
-                <div className="mt-6">
-                    Chuỗi đã được giải mã là: <strong>{decrypt}</strong>
-                </div>
-            )}
+            <EncryptionResult isEncryption={false} encryptionResult={decrypt} />
         </ContentItem>
     );
 };
