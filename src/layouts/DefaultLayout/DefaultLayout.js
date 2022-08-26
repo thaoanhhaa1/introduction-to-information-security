@@ -3,7 +3,7 @@ import NavbarMobile from '../components/NavbarMobile';
 
 const DefaultLayout = ({ children }) => {
     return (
-        <div>
+        <div className="pb-20">
             <Header />
             <NavbarMobile />
             <div>{children}</div>
