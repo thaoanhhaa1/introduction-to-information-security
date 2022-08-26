@@ -64,3 +64,17 @@ export const ClearIcon = ({ className }) => (
         />
     </svg>
 );
+
+export const MenuIcon = ({ className }) => (
+    <svg
+        width="14px"
+        height="14px"
+        className={className}
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 46 46"
+    >
+        <circle cx="32.5" cy="13.5" r="6.5" fill="#f93" />
+        <rect width={5} height={2} x={29} y={32} fill="#f93" rx={1} ry={1} />
+        <path d="M14.5 7A7.5 7.5 0 1 0 22 14.5 7.5 7.5 0 0 0 14.5 7zm0 13A5.5 5.5 0 1 1 20 14.5 5.51 5.51 0 0 1 14.5 20zM33 10H27a3 3 0 0 0-3 3v9h9a3 3 0 0 0 3-3V13A3 3 0 0 0 33 10zm1 9a1 1 0 0 1-1 1H26V13a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1zM12.54 24A2.54 2.54 0 0 0 10 26.54v6.92A2.54 2.54 0 0 0 12.54 36h6.92A2.54 2.54 0 0 0 22 33.46V24zM20 33.46a.54.54 0 0 1-.54.54H12.54a.54.54 0 0 1-.54-.54V26.54a.54.54 0 0 1 .54-.54H20zM36 24H24V36a3 3 0 0 0 3 3h9a3 3 0 0 0 3-3V27A3 3 0 0 0 36 24zm1 12a1 1 0 0 1-1 1H27a1 1 0 0 1-1-1V26H36a1 1 0 0 1 1 1z" />
+    </svg>
+);
