@@ -1,27 +1,16 @@
-import { useForm } from 'react-hook-form';
-import Button from '../Button';
-import ContentItem from '../ContentItem';
-import FormGroup from '../FormGroup';
-import Input from '../Input';
-import RadioGroup from '../RadioGroup';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
 import config from '~/config';
 import { getVietNamese } from '~/utils';
-import { useState } from 'react';
+import Button from '../Button';
+import ContentItem from '../ContentItem';
 import EncryptionResult from '../EncryptionResult';
+import FormGroup from '../FormGroup';
+import Input from '../Input';
 import Label from '../Label';
-
-const languages = [
-    {
-        value: 'english',
-        label: 'Tiếng Anh',
-    },
-    {
-        value: 'vietnamese',
-        label: 'Tiếng Việt',
-    },
-];
+import RadioGroup from '../RadioGroup';
 
 const schema = yup
     .object({
@@ -53,7 +42,10 @@ const CaesarEncryptionPlusEncrypt = () => {
         const res = string.split('').map((char) => {
             for (let i = 0; i < charList.length; i++) {
                 if (char === charList[i]) {
-                    return charList[(i + key) % charList.length];
+                    return charList[
+                        ((i + key < 0 ? charList.length : 0) + (i + key)) %
+                            charList.length
+                    ];
                 }
             }
             return char;
@@ -96,11 +88,11 @@ const CaesarEncryptionPlusEncrypt = () => {
                 <FormGroup className="mt-4">
                     <Label>Ngôn ngữ</Label>
                     <RadioGroup
-                        radioList={languages}
+                        radioList={config.languageList}
                         control={control}
                         name="encryption-language"
                     ></RadioGroup>
-                    {errors['encryption-language'] && (
+                    {errors?.['encryption-language'] && (
                         <FormGroup.Error>
                             {errors['encryption-language'].message}
                         </FormGroup.Error>

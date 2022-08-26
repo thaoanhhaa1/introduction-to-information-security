@@ -10,7 +10,7 @@ const Radio = ({ control, name, ...props }) => {
     return (
         <label className="relative block w-4 h-4 rounded-full border-2 border-primary">
             <input
-                id={props.value}
+                id={name + props.value}
                 {...field}
                 {...props}
                 className="hidden"

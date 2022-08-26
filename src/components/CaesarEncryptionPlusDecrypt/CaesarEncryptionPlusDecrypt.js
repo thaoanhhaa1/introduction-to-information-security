@@ -1,5 +1,9 @@
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import config from '~/config';
+import { getVietNamese } from '~/utils';
 import Button from '../Button';
 import ContentItem from '../ContentItem';
 import EncryptionResult from '../EncryptionResult';
@@ -8,27 +12,43 @@ import Input from '../Input';
 import Label from '../Label';
 import RadioGroup from '../RadioGroup';
 
-const languages = [
-    {
-        value: 'english',
-        label: 'Tiếng Anh',
-    },
-    {
-        value: 'vietnamese',
-        label: 'Tiếng Việt',
-    },
-];
+const schema = yup
+    .object({
+        decryption: yup.string().required('Vui lòng nhập chuỗi cần giải mã'),
+        'decryption-number': yup.string().required('Vui lòng nhập khóa'),
+        'decryption-language': yup
+            .string()
+            .required('Vui lòng chọn loại ngôn ngữ'),
+    })
+    .required();
 
 const CaesarEncryptionPlusDecrypt = () => {
     const {
         control,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+    });
     const [decrypt, setDecrypt] = useState();
 
     const handleValid = (values) => {
-        console.log('🚀 ~ handleValid ~ values', values);
+        const key = Number(values['decryption-number']);
+        const charList = config[values['decryption-language']];
+        const string = getVietNamese(values.decryption).toUpperCase();
+        const res = string.split('').map((char) => {
+            for (let i = 0; i < charList.length; i++) {
+                if (char === charList[i]) {
+                    return charList[
+                        ((i - key < 0 ? charList.length : 0) + (i - key)) %
+                            charList.length
+                    ];
+                }
+            }
+            return char;
+        });
+        setDecrypt(res.join(''));
     };
 
     return (
@@ -66,13 +86,13 @@ const CaesarEncryptionPlusDecrypt = () => {
                 <FormGroup className="mt-4">
                     <Label>Ngôn ngữ</Label>
                     <RadioGroup
-                        radioList={languages}
+                        radioList={config.languageList}
                         control={control}
-                        name="language"
+                        name="decryption-language"
                     ></RadioGroup>
-                    {errors.language && (
+                    {errors?.['decryption-language'] && (
                         <FormGroup.Error>
-                            {errors.language.message}
+                            {errors['decryption-language'].message}
                         </FormGroup.Error>
                     )}
                 </FormGroup>

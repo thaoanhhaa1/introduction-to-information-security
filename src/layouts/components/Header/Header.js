@@ -21,14 +21,13 @@ const Header = () => {
                     <Image src="/logo.png" alt="" />
                 </Link>
                 <div className="flex justify-between items-center">
-                    {navHeader.map((navItem) => (
-                        <HeaderItem
-                            navbar={config.classicalCryptographyList}
-                            key={v4()}
-                        >
-                            {navItem.title}
-                        </HeaderItem>
-                    ))}
+                    <HeaderItem
+                        navbar={config.classicalCryptographyList}
+                        key={v4()}
+                    >
+                        Mã hóa cổ điển
+                    </HeaderItem>
+                    <HeaderItem key={v4()}>Mã hóa hiện đại</HeaderItem>
                 </div>
             </div>
         </div>
