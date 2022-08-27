@@ -28,9 +28,10 @@ const MatrixDecrypt = () => {
     const handleValid = (values) => {
         setDecrypt();
         setErrors();
+        const decrypt = values.decrypt.toUpperCase();
 
-        if (!values.decrypt || !values.matrix) {
-            if (!values.decrypt)
+        if (!decrypt || !values.matrix) {
+            if (!decrypt)
                 setErrors((prev) => ({
                     ...prev,
                     decrypt: {
@@ -50,7 +51,7 @@ const MatrixDecrypt = () => {
         let listIndex;
         let matrix;
 
-        listIndex = values.decrypt.split('-');
+        listIndex = decrypt.split('-');
         for (let i = 0; i < listIndex.length; i++) {
             listIndex[i] = listIndex[i].split(', ');
         }
@@ -73,7 +74,7 @@ const MatrixDecrypt = () => {
                         .map((i) => {
                             const [a, b] = i.split('.');
                             if (!a || !b) return '';
-                            return matrix?.[+a - 1]?.[+b - 1];
+                            return matrix?.[+a - 1]?.[+b - 1].toUpperCase();
                         })
                         .join(''),
                 '',

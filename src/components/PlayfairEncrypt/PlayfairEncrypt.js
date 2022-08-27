@@ -20,8 +20,14 @@ const PlayfairEncrypt = () => {
     const handleValid = (values) => {
         const arr = [];
         const obj = {};
-        const string = values.encryption.toUpperCase().replaceAll('J', 'I');
-        const key = values['key-encryption'].toUpperCase().replaceAll('J', 'I');
+        const string = values.encryption
+            .toUpperCase()
+            .replaceAll('J', 'I')
+            .replaceAll(' ', '');
+        const key = values['key-encryption']
+            .toUpperCase()
+            .replaceAll('J', 'I')
+            .replaceAll(' ', '');
         const matrix = createMatrix(5, 5);
         let i = 0,
             j = 0;
@@ -77,7 +83,7 @@ const PlayfairEncrypt = () => {
         setEncrypts(
             resAll.reduce((a, item) => {
                 if (item.includes('I')) {
-                    return [...a, item, item.replace('I', 'J')];
+                    return [...a, item, item.replaceAll('I', 'J')];
                 }
                 return [...a, item];
             }, []),

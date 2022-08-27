@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { v4 } from 'uuid';
 import Heading from '~/components/Heading';
 import Image from '~/components/Image';
 import config from '~/config';
@@ -34,6 +35,7 @@ const NavbarMobile = ({ isShow, setShowNavbarMobile }) => {
                     <Heading>Mã hóa cổ điển</Heading>
                     {config.classicalCryptographyList.map((item, index) => (
                         <Link
+                            key={v4()}
                             className="py-1 font-medium text-text-2 hover:text-primary transition-all"
                             to={item.to}
                         >

@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import ContentGroup from '~/components/ContentGroup';
+import PlayfairDecrypt from '~/components/PlayfairDecrypt';
 import PlayfairEncrypt from '~/components/PlayfairEncrypt';
 
 const PlayfairPage = () => {
@@ -7,9 +9,10 @@ const PlayfairPage = () => {
     }, []);
 
     return (
-        <div className="max-w-[600px] w-full mx-auto px-4 pt-2 mt-[var(--header-height)]">
+        <ContentGroup>
             <PlayfairEncrypt />
-        </div>
+            <PlayfairDecrypt />
+        </ContentGroup>
     );
 };
 
