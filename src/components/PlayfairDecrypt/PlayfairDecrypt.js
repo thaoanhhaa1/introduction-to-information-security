@@ -54,18 +54,18 @@ const PlayfairDecrypt = () => {
         for (let i = 0; i < length; i += 2) {
             const [x1, y1] = obj[inputCharList[i]];
             if (i + 1 >= length) {
-                resAll.push(res + `${matrix[x1][(y1 - 1) % 5]}`);
-                resAll.push(res + `${matrix[(x1 - 1) % 5][y1]}`);
+                resAll.push(res + `${matrix[x1][(y1 + 4) % 5]}`);
+                resAll.push(res + `${matrix[(x1 + 4) % 5][y1]}`);
             } else {
                 const [x2, y2] = obj[inputCharList[i + 1]];
 
                 if (x1 === x2) {
-                    res += `${matrix[x1][(y1 - 1) % 5]}${
-                        matrix[x2][(y2 - 1) % 5]
+                    res += `${matrix[x1][(y1 + 4) % 5]}${
+                        matrix[x2][(y2 + 4) % 5]
                     }`;
                 } else if (y1 === y2) {
-                    res += `${matrix[(x1 - 1) % 5][y1]}${
-                        matrix[(x2 - 1) % 5][y2]
+                    res += `${matrix[(x1 + 4) % 5][y1]}${
+                        matrix[(x2 + 4) % 5][y2]
                     }`;
                 } else {
                     res += `${matrix[x1][y2]}${matrix[x2][y1]}`;
@@ -83,12 +83,10 @@ const PlayfairDecrypt = () => {
                 return [...a, item];
             }, []),
         );
-
-        console.log('🚀 ~ handleValid ~ matrix', matrix);
     };
 
     return (
-        <ContentItem title="Mã hóa">
+        <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
                 <FormGroup>
                     <Label htmlFor="decryption">Chuỗi cần giải mã</Label>
