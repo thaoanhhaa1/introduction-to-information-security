@@ -6,6 +6,7 @@ import ContentGroup from '~/components/ContentGroup';
 const CaesarEncryptionPlusPage = () => {
     useEffect(() => {
         document.title = 'Mật mã Caesar';
+        window.scrollTo(0, 0);
     }, []);
 
     return (

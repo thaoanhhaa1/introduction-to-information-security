@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { v4 } from 'uuid';
 import Heading from '~/components/Heading';
 import Image from '~/components/Image';
@@ -28,19 +28,29 @@ const NavbarMobile = ({ isShow, setShowNavbarMobile }) => {
                     isShow ? 'translate-x-0' : 'translate-x-full',
                 )}
             >
-                <Link className="block m-4 w-[150px]" to={config.routes.home}>
+                <Link
+                    onClick={handleClickModal}
+                    className="block m-4 w-[150px]"
+                    to={config.routes.home}
+                >
                     <Image src="/logo.png" alt="" />
                 </Link>
                 <div className="flex flex-col pt-4 px-4">
                     <Heading>Mã hóa cổ điển</Heading>
                     {config.classicalCryptographyList.map((item, index) => (
-                        <Link
+                        <NavLink
                             key={v4()}
-                            className="py-1 font-medium text-text-2 hover:text-primary transition-all"
+                            className={({ isActive }) =>
+                                classNames(
+                                    'py-1 font-medium text-text-2 hover:text-primary transition-all',
+                                    isActive ? 'text-primary' : '',
+                                )
+                            }
                             to={item.to}
+                            onClick={handleClickModal}
                         >
                             {index + 1}. {item.title}
-                        </Link>
+                        </NavLink>
                     ))}
                 </div>
                 <div className="pt-4 px-4">

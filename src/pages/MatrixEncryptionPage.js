@@ -6,6 +6,7 @@ import MatrixEncrypt from '~/components/MatrixEncrypt';
 const MatrixEncryptionPage = () => {
     useEffect(() => {
         document.title = 'Nhập môn an toàn thông tin';
+        window.scrollTo(0, 0);
     }, []);
 
     return (

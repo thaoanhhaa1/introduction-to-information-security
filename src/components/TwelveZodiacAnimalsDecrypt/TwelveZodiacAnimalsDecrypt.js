@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -7,17 +8,15 @@ import convertCapitalize from '~/utils/convertCapitalize';
 import Button from '../Button';
 import ContentItem from '../ContentItem';
 import EncryptionResult from '../EncryptionResult';
-import FormGroup from '../FormGroup';
-import Input from '../Input';
 
 const schema = yup.object({
-    string: yup.string().required('Vui lòng nhập chuỗi cần mã hóa'),
+    string: yup.string().required('Vui lòng nhập chuỗi cần giải mã'),
 });
 
 const TwelveZodiacAnimalsDecrypt = () => {
     const {
+        register,
         handleSubmit,
-        control,
         formState: { errors },
     } = useForm({
         mode: 'onBlur',
@@ -54,19 +53,15 @@ const TwelveZodiacAnimalsDecrypt = () => {
     return (
         <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
-                <FormGroup>
-                    <Input
-                        invalid={errors.string}
-                        control={control}
-                        name="string"
-                        placeholder="Ex: Hợi Học - Tí Tin"
-                    ></Input>
-                    {(errors.string || error) && (
-                        <FormGroup.Error>
-                            {errors?.string?.message ?? error}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
+                <TextField
+                    id="string"
+                    {...register('string')}
+                    label="Chuỗi cần giải mã"
+                    variant="filled"
+                    fullWidth
+                    helperText={errors?.string?.message ?? error}
+                    error={!!(errors?.string?.message ?? error)}
+                />
                 <Button
                     className="min-w-[200px] mx-auto mt-5"
                     primary

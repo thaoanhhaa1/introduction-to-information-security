@@ -1,13 +1,12 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { TextField } from '@mui/material';
 import { useEffect, useState, useTransition } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import config from '~/config';
 import Button from '../Button';
-import ContentItem from '../ContentItem/ContentItem';
+import ContentItem from '../ContentItem';
 import EncryptionResult from '../EncryptionResult';
-import FormGroup from '../FormGroup';
-import Input from '../Input';
 
 const schema = yup.object({
     string: yup.string().required('Vui lòng nhập chuỗi cần mã hóa'),
@@ -15,7 +14,7 @@ const schema = yup.object({
 
 const TwelveZodiacAnimalsEncrypt = () => {
     const {
-        control,
+        register,
         handleSubmit,
         watch,
         formState: { errors },
@@ -34,6 +33,7 @@ const TwelveZodiacAnimalsEncrypt = () => {
 
     const handleValid = (values) => {
         setEncrypt();
+        setError();
         startTransition(() => {
             const words = values.string.replace(/[,.]/, '').split(' ');
             if (words.length > 12) {
@@ -56,7 +56,9 @@ const TwelveZodiacAnimalsEncrypt = () => {
 
                     return `${
                         config.twelveZodiacAnimalsObj[i++]
-                    } ${word[0].toUpperCase()}${word.substring(1)}`;
+                    } ${word[0].toUpperCase()}${word
+                        .substring(1)
+                        .toLowerCase()}`;
                 })
                 .sort(() => Math.random() - 0.5)
                 .join(' - ');
@@ -67,19 +69,15 @@ const TwelveZodiacAnimalsEncrypt = () => {
     return (
         <ContentItem title="Mã hóa">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
-                <FormGroup>
-                    <Input
-                        invalid={errors.string}
-                        control={control}
-                        name="string"
-                        placeholder="Chuỗi cần mã hóa..."
-                    ></Input>
-                    {(errors.string || error) && (
-                        <FormGroup.Error>
-                            {errors?.string?.message ?? error}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
+                <TextField
+                    id="string"
+                    {...register('string')}
+                    label="Chuỗi cần mã hóa"
+                    variant="filled"
+                    fullWidth
+                    helperText={errors?.string?.message ?? error}
+                    error={!!(errors?.string?.message ?? error)}
+                />
                 <Button
                     className="min-w-[200px] mx-auto mt-5"
                     primary

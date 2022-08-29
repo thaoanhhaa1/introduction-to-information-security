@@ -6,6 +6,7 @@ import PlayfairEncrypt from '~/components/PlayfairEncrypt';
 const PlayfairPage = () => {
     useEffect(() => {
         document.title = 'Mật mã Playfair';
+        window.scrollTo(0, 0);
     }, []);
 
     return (

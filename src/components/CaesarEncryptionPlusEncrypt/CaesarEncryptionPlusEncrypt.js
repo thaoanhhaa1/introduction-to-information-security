@@ -16,7 +16,7 @@ const schema = yup
     .object({
         encryption: yup.string().required('Vui lòng nhập chuỗi cần mã hóa'),
         'encryption-number': yup
-            .number('Khóa phải là số')
+            .string('Khóa phải là số')
             .required('Vui lòng nhập khóa'),
         'encryption-language': yup
             .string()

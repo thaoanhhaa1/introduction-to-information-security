@@ -6,6 +6,7 @@ import TwelveZodiacAnimalsEncrypt from '~/components/TwelveZodiacAnimalsEncrypt'
 const TwelveZodiacAnimalsPage = () => {
     useEffect(() => {
         document.title = 'Mật mã 12 con giáp';
+        window.scrollTo(0, 0);
     }, []);
 
     return (

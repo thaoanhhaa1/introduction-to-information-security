@@ -47,3 +47,8 @@
         background-color: rgba(255, 255, 255, 0.4);
     }
 }
+
+/* MaterialUIPage */
+.material-ui {
+    margin-top: var(--header-height);
+}

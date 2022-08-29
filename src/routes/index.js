@@ -1,6 +1,7 @@
 import config from '~/config';
 import CaesarEncryptionPlusPage from '~/pages/CaesarEncryptionPlusPage';
 import HomePage from '~/pages/HomePage';
+import MaterialUIPage from '~/pages/MaterialUIPage';
 import MatrixEncryptionPage from '~/pages/MatrixEncryptionPage';
 import PlayfairPage from '~/pages/PlayfairPage';
 import TwelveZodiacAnimalsPage from '~/pages/TwelveZodiacAnimalsPage';
@@ -25,6 +26,10 @@ const routes = [
     {
         path: config.routes.playFair,
         element: PlayfairPage,
+    },
+    {
+        path: '/test',
+        element: MaterialUIPage,
     },
 ];
 
