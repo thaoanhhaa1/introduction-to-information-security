@@ -7,6 +7,7 @@ const routes = {
     twelveZodiacAnimalsPage: `${classicalCryptography}/twelve-zodiac-animals`,
     caesarEncryptionPlus: `${classicalCryptography}/caesar-encryption`,
     playFair: `${classicalCryptography}/play-fair`,
+    railFenceCipher: `${classicalCryptography}/rail-fence-cipher`,
 };
 
 export default routes;

@@ -5,8 +5,9 @@ const config = {
     classicalCryptographyList: [
         { title: 'Ví dụ 1', to: routes.example1 },
         { title: 'Mã hóa 12 con giáp', to: routes.twelveZodiacAnimalsPage },
-        { title: 'Mã hóa Caesar', to: routes.caesarEncryptionPlus },
-        { title: 'Mã hóa Playfair', to: routes.playFair },
+        { title: 'Mã Caesar', to: routes.caesarEncryptionPlus },
+        { title: 'Mã Playfair', to: routes.playFair },
+        { title: 'Mã hàng rào sắt', to: routes.railFenceCipher },
     ],
     english: [
         'A',
