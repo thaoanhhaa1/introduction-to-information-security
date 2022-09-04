@@ -1,8 +1,8 @@
 import config from '~/config';
 import CaesarEncryptionPlusPage from '~/pages/CaesarEncryptionPlusPage';
 import HomePage from '~/pages/HomePage';
-import MaterialUIPage from '~/pages/MaterialUIPage';
 import MatrixEncryptionPage from '~/pages/MatrixEncryptionPage';
+import NotFoundPage from '~/pages/NotFoundPage';
 import PlayfairPage from '~/pages/PlayfairPage';
 import RailFenceCipherPage from '~/pages/RailFenceCipherPage';
 import TwelveZodiacAnimalsPage from '~/pages/TwelveZodiacAnimalsPage';
@@ -33,8 +33,8 @@ const routes = [
         element: RailFenceCipherPage,
     },
     {
-        path: '/test',
-        element: MaterialUIPage,
+        path: config.routes.notFoundPage,
+        element: NotFoundPage,
     },
 ];
 

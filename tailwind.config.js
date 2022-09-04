@@ -14,6 +14,10 @@ module.exports = {
                 'text-5': '#B2B3BD',
                 error: '#EB5757',
             },
+            backgroundImage: {
+                '404-page':
+                    'url("https://cdn.dribbble.com/users/285475/screenshots/2083086/dribbble_1.gif")',
+            },
         },
     },
     plugins: [],

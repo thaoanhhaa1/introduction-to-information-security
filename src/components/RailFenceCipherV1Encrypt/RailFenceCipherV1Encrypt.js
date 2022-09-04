@@ -68,7 +68,6 @@ const RailFenceCipherV1Encrypt = () => {
                     variant="filled"
                 />
                 <TextField
-                    type="number"
                     error={!!errors['depth']}
                     helperText={errors['depth']?.message}
                     className="!mt-5"
@@ -76,6 +75,7 @@ const RailFenceCipherV1Encrypt = () => {
                     label="Độ sâu"
                     {...register('depth')}
                     variant="filled"
+                    type="number"
                     inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                 />
                 <TextField

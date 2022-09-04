@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
@@ -8,7 +9,6 @@ import Button from '../Button';
 import ContentItem from '../ContentItem';
 import EncryptionResult from '../EncryptionResult';
 import FormGroup from '../FormGroup';
-import Input from '../Input';
 import Label from '../Label';
 import RadioGroup from '../RadioGroup';
 
@@ -25,6 +25,7 @@ const schema = yup
 const CaesarEncryptionPlusDecrypt = () => {
     const {
         control,
+        register,
         handleSubmit,
         formState: { errors },
     } = useForm({
@@ -54,35 +55,25 @@ const CaesarEncryptionPlusDecrypt = () => {
     return (
         <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
-                <FormGroup>
-                    <Label htmlFor="decryption">Chuỗi cần giải mã</Label>
-                    <Input
-                        invalid={errors.decryption}
-                        control={control}
-                        name="decryption"
-                        placeholder="Ex: USVPOH EBJ IPD DPOH OHIJFQ"
-                    ></Input>
-                    {errors.decryption && (
-                        <FormGroup.Error>
-                            {errors.decryption.message}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
-                <FormGroup className="mt-4">
-                    <Label htmlFor="decryption-number">Khóa</Label>
-                    <Input
-                        defaultValue={0}
-                        type="number"
-                        control={control}
-                        name="decryption-number"
-                        placeholder="Khóa"
-                    ></Input>
-                    {errors['decryption-number'] && (
-                        <FormGroup.Error>
-                            {errors['decryption-number'].message}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
+                <TextField
+                    error={!!errors.decryption}
+                    helperText={errors.decryption?.message}
+                    fullWidth
+                    label="Chuỗi cần giải mã"
+                    {...register('decryption')}
+                    variant="filled"
+                />
+                <TextField
+                    className="!mt-4"
+                    error={!!errors['decryption-number']}
+                    helperText={errors['decryption-number']?.message}
+                    fullWidth
+                    label="Khóa"
+                    {...register('decryption-number')}
+                    variant="filled"
+                    type="number"
+                    inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
+                />
                 <FormGroup className="mt-4">
                     <Label>Ngôn ngữ</Label>
                     <RadioGroup

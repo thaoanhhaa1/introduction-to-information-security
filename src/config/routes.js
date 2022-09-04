@@ -8,6 +8,7 @@ const routes = {
     caesarEncryptionPlus: `${classicalCryptography}/caesar-encryption`,
     playFair: `${classicalCryptography}/play-fair`,
     railFenceCipher: `${classicalCryptography}/rail-fence-cipher`,
+    notFoundPage: '*',
 };
 
 export default routes;

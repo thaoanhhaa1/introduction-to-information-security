@@ -1,20 +1,32 @@
+import { yupResolver } from '@hookform/resolvers/yup';
+import { TextField } from '@mui/material';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { v4 } from 'uuid';
+import * as yup from 'yup';
 import config from '~/config';
 import { createMatrix } from '~/utils';
 import Button from '../Button';
 import ContentItem from '../ContentItem';
-import FormGroup from '../FormGroup';
-import Input from '../Input';
-import Label from '../Label';
+
+const schema = yup
+    .object({
+        decryption: yup.string().required('Vui lòng nhập chuỗi cần giải mã'),
+        'key-decryption': yup
+            .string()
+            .required('Vui lòng nhập khóa để giải mã'),
+    })
+    .required();
 
 const PlayfairDecrypt = () => {
     const {
-        control,
+        register,
         handleSubmit,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+    });
     const [decrypts, setDecrypts] = useState([]);
 
     const handleValid = (values) => {
@@ -88,32 +100,23 @@ const PlayfairDecrypt = () => {
     return (
         <ContentItem title="Giải mã">
             <form onSubmit={handleSubmit(handleValid)} className="mt-6">
-                <FormGroup>
-                    <Label htmlFor="decryption">Chuỗi cần giải mã</Label>
-                    <Input
-                        placeholder="Ex: Information Technology"
-                        control={control}
-                        name="decryption"
-                    ></Input>
-                    {errors.decryption && (
-                        <FormGroup.Error>
-                            {errors.decryption.message}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
-                <FormGroup className="mt-4">
-                    <Label htmlFor="key-decryption">Khóa</Label>
-                    <Input
-                        placeholder="Ex: Monday"
-                        control={control}
-                        name="key-decryption"
-                    ></Input>
-                    {errors['key-decryption'] && (
-                        <FormGroup.Error>
-                            {errors['key-decryption'].message}
-                        </FormGroup.Error>
-                    )}
-                </FormGroup>
+                <TextField
+                    error={!!errors.decryption}
+                    helperText={errors.decryption?.message}
+                    fullWidth
+                    label="Chuỗi cần giải mã"
+                    {...register('decryption')}
+                    variant="filled"
+                />
+                <TextField
+                    className="!mt-4"
+                    error={!!errors['key-decryption']}
+                    helperText={errors['key-decryption']?.message}
+                    fullWidth
+                    label="Khóa"
+                    {...register('key-decryption')}
+                    variant="filled"
+                />
                 <Button
                     className="min-w-[200px] mx-auto mt-5"
                     primary
