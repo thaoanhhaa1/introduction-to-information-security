@@ -49,16 +49,16 @@ const RailFenceCipherV2Encrypt = () => {
             .split('')
             .filter((char) => language.includes(char));
 
-        const keyChar = [...key];
-        const keyCharSort = [...keyChar].sort();
+        const keyCharSort = [...key].sort();
         const arrKey = [];
 
+        const keyTemp = [...key];
         keyCharSort.forEach((char, index) => {
-            const indexBefore = keyChar.indexOf(char);
-            keyChar.splice(indexBefore, 1);
+            const indexBefore = keyTemp.indexOf(char);
+            keyTemp[indexBefore] = '*';
             arrKey.push({
                 index,
-                indexBefore: key.indexOf(char),
+                indexBefore: indexBefore,
             });
         });
 
