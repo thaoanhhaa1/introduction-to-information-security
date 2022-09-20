@@ -1,4 +1,5 @@
 const classicalCryptography = '/classical-cryptography';
+const modernCryptography = '/modern-cryptography';
 
 const routes = {
     home: '/',
@@ -8,6 +9,7 @@ const routes = {
     caesarEncryptionPlus: `${classicalCryptography}/caesar-encryption`,
     playFair: `${classicalCryptography}/play-fair`,
     railFenceCipher: `${classicalCryptography}/rail-fence-cipher`,
+    rsa: `${modernCryptography}/rsa-cipher`,
     notFoundPage: '*',
 };
 

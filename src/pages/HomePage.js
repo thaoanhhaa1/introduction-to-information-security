@@ -18,7 +18,9 @@ const HomePage = () => {
                 <Encrypt navbar={config.classicalCryptographyList}>
                     Mã hóa cổ điển
                 </Encrypt>
-                <Encrypt>Mã hóa hiện đại</Encrypt>
+                <Encrypt navbar={config.modernCryptography}>
+                    Mã hóa hiện đại
+                </Encrypt>
             </div>
         </>
     );

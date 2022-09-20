@@ -6,6 +6,7 @@ import NotFoundPage from '~/pages/NotFoundPage';
 import PlayfairPage from '~/pages/PlayfairPage';
 import RailFenceCipherPage from '~/pages/RailFenceCipherPage';
 import TwelveZodiacAnimalsPage from '~/pages/TwelveZodiacAnimalsPage';
+import RSAEncryption from '~/pages/RSAEncryption';
 
 const routes = [
     {
@@ -35,6 +36,10 @@ const routes = [
     {
         path: config.routes.notFoundPage,
         element: NotFoundPage,
+    },
+    {
+        path: config.routes.rsa,
+        element: RSAEncryption,
     },
 ];
 

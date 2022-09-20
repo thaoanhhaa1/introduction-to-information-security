@@ -9,6 +9,7 @@ const config = {
         { title: 'Mã Playfair', to: routes.playFair },
         { title: 'Mã hàng rào sắt', to: routes.railFenceCipher },
     ],
+    modernCryptography: [{ title: 'Mã hóa RSA', to: routes.rsa }],
     english: [
         'A',
         'B',

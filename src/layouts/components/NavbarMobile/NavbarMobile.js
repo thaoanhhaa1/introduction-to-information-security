@@ -55,6 +55,21 @@ const NavbarMobile = ({ isShow, setShowNavbarMobile }) => {
                 </div>
                 <div className="pt-4 px-4">
                     <Heading>Mã hóa hiện đại</Heading>
+                    {config.modernCryptography.map((item, index) => (
+                        <NavLink
+                            key={v4()}
+                            className={({ isActive }) =>
+                                classNames(
+                                    'py-1 font-medium text-text-2 hover:text-primary transition-all',
+                                    isActive ? 'text-primary' : '',
+                                )
+                            }
+                            to={item.to}
+                            onClick={handleClickModal}
+                        >
+                            {index + 1}. {item.title}
+                        </NavLink>
+                    ))}
                 </div>
             </div>
         </div>

@@ -19,7 +19,9 @@ const Header = ({ setShowNavbarMobile }) => {
                     >
                         Mã hóa cổ điển
                     </HeaderItem>
-                    <HeaderItem key={v4()}>Mã hóa hiện đại</HeaderItem>
+                    <HeaderItem key={v4()} navbar={config.modernCryptography}>
+                        Mã hóa hiện đại
+                    </HeaderItem>
                 </div>
                 <button
                     onClick={() => setShowNavbarMobile(true)}
