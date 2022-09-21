@@ -1,6 +1,7 @@
 import ContentGroup from '~/components/ContentGroup';
 import ContentItem from '~/components/ContentItem';
 import KeyRSAEncryption from '~/components/KeyRSAEncryption';
+import RSAEncoding from '~/components/RSAEncoding';
 
 const RSAEncryption = () => {
     return (
@@ -9,7 +10,9 @@ const RSAEncryption = () => {
                 <KeyRSAEncryption />
             </ContentItem>
 
-            <ContentItem title="Mã hóa RSA"></ContentItem>
+            <ContentItem title="Mã hóa RSA">
+                <RSAEncoding />
+            </ContentItem>
         </ContentGroup>
     );
 };
